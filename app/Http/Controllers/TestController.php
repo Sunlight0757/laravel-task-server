@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Test;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TestController extends Controller
 {
@@ -22,6 +24,13 @@ class TestController extends Controller
             'quantity' => 'required|integer',
             // Add other validation rules as needed
         ]);
+
+
+        $user = new User;
+        $user->name = 'test';
+        $user->email = 'test@gmail.com';
+        $user->password = Hash::make('test');
+        $user->save();
 
         $model = new Test;
         // Set the attributes of the model based on the request data
