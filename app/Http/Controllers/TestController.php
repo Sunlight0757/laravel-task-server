@@ -25,13 +25,6 @@ class TestController extends Controller
             // Add other validation rules as needed
         ]);
 
-
-        $user = new User;
-        $user->name = 'test';
-        $user->email = 'test@gmail.com';
-        $user->password = Hash::make('test');
-        $user->save();
-
         $model = new Test;
         // Set the attributes of the model based on the request data
         $model->name = $validatedData['name'];
@@ -41,6 +34,12 @@ class TestController extends Controller
         // Set other attributes as needed
         $product = Test::create($request->all());
         return response()->json($model, 201);
+    }
+
+    public function show($id)
+    {
+        $models = Test::find($id);
+        return response()->json($models);
     }
 
     public function update(Request $request, $id)
@@ -61,7 +60,7 @@ class TestController extends Controller
         $model->name = $validatedData['name'];
         $model->description = $validatedData['description'];
         $model->price = $validatedData['price'];
-        $model->quatity = $validatedData['quantity'];
+        $model->quantity = $validatedData['quantity'];
         // Update other attributes as needed
         $model->save();
 

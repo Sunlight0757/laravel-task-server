@@ -22,6 +22,7 @@ use App\Http\Controllers\PostController;
 // });
 Route::get('/', [TestController::class, 'index']);
 Route::post('/', [TestController::class, 'store']);
+Route::get('/{id}', [TestController::class, 'show']);
 Route::put('/{id}', [TestController::class, 'update']);
 Route::delete('/{id}', [TestController::class, 'destroy']);
 Route::post('register', [PassportAuthController::class, 'register']);
